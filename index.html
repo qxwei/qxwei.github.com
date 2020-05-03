@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IT小君动画ppt</title>
+        <style type="text/css">
+            canvas{
+                border:3px solid rgba(255,192,203);
+				border-radius: 7px;
+				margin-top:20px;
+            }
+			#main{
+				width:100%;
+			}
+			#toolBar{
+				width:25%;
+				float:left;
+				text-align: right;
+				margin-top: 50px;
+			}
+			#canvasBar{
+				width:75%;
+				float:left;
+			}
+			#buttonlist{
+				margin-right: 50px;
+			}
+
+			.button {
+				background-color: #FFC0CB; /* Green */
+				border: none;
+				color: white;
+				padding: 10px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 14px;
+				cursor:pointer;
+				outline:none;
+				border-radius: 10px;
+				margin-top:10px;
+				width:160px;
+			}
+        </style>
+    </head>
+    <body>
+	<div id="main">
+	<div id="toolBar">
+	<div id="buttonlist">
+	<div>
+	<button class="button" onclick='fillabcd()'>填充ABCD</button>
+	</div>
+	<div>
+	<button class="button" onclick='resetabcd()'>撤销ABCD填充</button>
+	</div>
+	
+	
+	<div>
+	<button class="button" onclick='fillbcgh()'>填充BCGH</button>
+	</div>
+	
+	<div>
+	<button class="button" onclick='resetbcgh()'>撤销BCGH填充</button>
+	</div>
+	
+	<div>
+	<button class="button" onclick='fillcdij()'>填充CDIJ</button>
+	</div>
+	
+	<div>
+	<button class="button" onclick='resetcdij()'>撤销CDIJ填充</button>
+	</div>
+	<div>
+	<button class="button" onclick='move()'>平移</button>
+	</div>
+	
+	
+	</div>
+	</div>
+	<div id="canvasBar">
+        <canvas id="mycanvas" width="700" height="600"></canvas>
+	</div>
+	</div>
+    </body>
+    <script type="text/javascript">
+        var canvas = document.getElementById("mycanvas");
+        var context = canvas.getContext("2d");
+		context.font="20px Arial";
+        //目标图：先画在画布上的图形，
+        context.beginPath();
+		context.fillStyle = "palevioletred";
+        //context.fillRect(50,50,300,300);
+		context.strokeRect(50,50,300,300);
+        context.fill();
+        //原图：后画在画布上的图形
+        context.beginPath();
+        context.fillStyle = "deepskyblue";
+      //  context.fillRect(350,150,200,200); //x,y width
+		context.strokeRect(350,150,200,200);
+        context.fill();
+		
+		context.beginPath();
+		context.fillStyle = "palevioletred";
+        //context.fillRect(50,50,300,300);
+		context.strokeRect(50,150,300,200);
+        context.fill();
+		
+		context.beginPath();
+		context.fillStyle = "palevioletred";
+        //context.fillRect(50,50,300,300);
+		context.strokeRect(150,50,200,300);
+        context.fill();
+		
+		context.fillStyle = "deepskyblue";
+		context.fillText("A",40,47);
+		context.fillText("B",40,370);
+		context.fillText("C",345,370);
+		context.fillText("D",345,47);
+		
+		
+		context.fillText("E",545,370);
+		context.fillText("F",545,148);
+		context.fillText("G",350,148);
+		
+		context.fillText("H",33,147);
+		context.fillText("I",150,47);
+		context.fillText("K",152,147);
+		context.fillText("J",150,370);
+		
+		function drawOne(c){
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			if(c)
+			context.fillRect(50,50,100,100);
+			context.strokeRect(50,50,100,100);
+			context.fill();
+		}
+		
+		function drawTwo(c){
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			if(c)
+			context.fillRect(150,50,200,100);
+			context.strokeRect(150,50,200,100);
+			context.fill();
+		}
+		function drawThree(c){
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			if(c)
+			context.fillRect(50,150,100,200);
+			context.strokeRect(50,150,100,200);
+			context.fill();
+		}
+		function drawFour(c){
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			if(c)
+			context.fillRect(150,150,200,200);
+			context.strokeRect(150,150,200,200);
+			context.fill();
+		}
+		function drawFive(c){
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			if(c)
+			context.fillRect(350,150,200,200);
+			context.strokeRect(350,150,200,200);
+			context.fill();
+		}
+		
+		function fillabcd(){
+		
+			context.beginPath();
+			context.fillStyle = "#99CCCC";
+			context.fillRect(50,50,300,300);
+			context.strokeRect(50,50,300,300);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			//context.fillRect(50,50,300,300);
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			//context.fillRect(50,50,300,300);
+			context.strokeRect(150,50,200,300);
+			context.fill();
+			
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+		}
+		
+		function resetabcd(){
+			context.beginPath();
+			context.fillStyle = "white";
+			context.fillRect(50,50,300,300);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			context.strokeRect(150,50,200,300);
+			context.fill();
+			
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+			
+		}
+		
+		function fillbcgh(){
+			
+			context.beginPath();
+			context.fillStyle = "#FFCC99";
+			context.fillRect(50,150,300,200);
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			context.strokeRect(150,50,200,300);
+			context.fill();
+			
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+		}
+		
+		function resetbcgh(){
+			
+			context.beginPath();
+			context.fillStyle = "white";
+			context.fillRect(50,150,300,200);
+			context.fillStyle = "deepskyblue";
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			drawThree();
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+		}
+		
+		function fillcdij(){
+			
+			context.beginPath();
+			context.fillStyle = "#FFCCCC";
+			context.strokeRect(150,50,200,300);
+			context.fillRect(150,50,200,300);
+			context.fill();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+		}
+		
+		function resetcdij(){
+				context.beginPath();
+			context.fillStyle = "white";
+			context.fillRect(150,50,200,300);
+			context.strokeRect(150,50,200,300);
+			context.fill();
+			
+			drawThree();
+			
+			context.beginPath();
+			context.fillStyle = "palevioletred";
+			context.strokeRect(50,150,300,200);
+			context.fill();
+			
+			context.fillStyle = "deepskyblue";
+			context.fillText("K",152,147);
+		}
+		var int= null;
+		var i=0;
+		function move(){
+			i=0;
+			int = window.clearInterval(int);
+			context.beginPath();
+			context.fillStyle = "white";
+			context.fillRect(150,150,200,200);
+			context.strokeRect(150,150,200,200);
+			context.fill();
+			int=self.setInterval("doMove()",30)
+		}
+		function doMove(){
+				context.beginPath();
+				context.fillStyle = "white";
+				context.fillRect(150,150,200,200);
+				context.strokeRect(150,150,200,200);
+				context.fill();
+				
+				context.save();
+				context.translate(i,0)
+				context.beginPath();
+				context.fillStyle = "#FFCCCC";
+				context.fillRect(150,150,200,200);
+				context.strokeRect(150,150,200,200);
+				context.fill();
+				context.restore();
+				i++;
+				if(i>=200){
+					int = window.clearInterval(int);
+				}
+		}
+    </script>
+</html>
